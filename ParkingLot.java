@@ -80,8 +80,11 @@ public class ParkingLot {
 	 */
 	public Spot getSpotAt(int i) {
 
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
+		if (i >= occupancy.size() || i < 0) {
+			throw new IndexOutOfBoundsException("Out of range index error.")
+		}
 
+		return occupancy.get(i);
 	}
 
 	/**
@@ -89,8 +92,17 @@ public class ParkingLot {
 	 */
 	public int getOccupancy() {
 
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
+		int count = 0;
 
+		if (!occupancy.isEmpty()){
+			for (int i = 0; i < occupancy.size(); i++)
+				if (occupancy.get(i) != null){
+					count++;
+				}
+			}
+		}
+
+		return count;
 	}
 
 	/**
