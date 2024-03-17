@@ -26,7 +26,7 @@ public class ParkingLot {
 
 		if (capacity < 0) {
 		
-			// Hint: throw a suitable exception here.
+			throw new IllegalArgumentException("Cannot have a parking with a negative number of spots.")
 		
 		}
 
