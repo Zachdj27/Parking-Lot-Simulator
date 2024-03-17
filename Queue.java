@@ -14,7 +14,7 @@ public interface Queue<E> {
 
 	E dequeue();
 
-	E peek();
+	Spot peek();
 
 	int size();
 }
