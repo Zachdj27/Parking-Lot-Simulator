@@ -26,7 +26,7 @@ public class ParkingLot {
 
 		if (capacity < 0) {
 		
-			throw new IllegalArgumentException("Cannot have a parking with a negative number of spots.")
+			throw new IllegalArgumentException("Cannot have a parking with a negative number of spots.");
 		
 		}
 
@@ -45,7 +45,7 @@ public class ParkingLot {
 		if (c == null) {
 			throw new NullPointerException("No null cars allowed");
 		}
-		if (!c instanceof Car){
+		if (!(c instanceof Car)){
 			throw new IllegalArgumentException("Only cars allowed in this parking");			
 		}
 		if (timestamp < 0) {
@@ -53,7 +53,7 @@ public class ParkingLot {
 		}
 
 		if (occupancy.isEmpty() && capacity != 0){
-			occupancy.addFirst(new Spot(c, timestamp));
+			occupancy.add(new Spot(c, timestamp));
 		}
 		else{
 			boolean notParked = true;
@@ -76,7 +76,18 @@ public class ParkingLot {
 	 */
 	public Spot remove(int i) {
 	
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
+		if (i >= occupancy.size() || i < 0) {
+			throw new IndexOutOfBoundsException("Out of range index error.");
+		}
+
+		if(occupancy.get(i) == null) {
+			throw new NullPointerException("No car is parked here!");
+		}
+
+		Spot removed = occupancy.get(i);
+		occupancy.remove(i);
+
+		return removed;
 	
 	}
 
@@ -85,7 +96,7 @@ public class ParkingLot {
 		if (c == null) {
 			throw new NullPointerException("No null cars allowed");
 		}
-		if (!c instanceof Car){
+		if (!(c instanceof Car)){
 			throw new IllegalArgumentException("Only cars allowed in this parking");			
 		}
 		if (timestamp < 0) {
