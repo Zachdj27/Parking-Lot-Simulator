@@ -59,9 +59,16 @@ public class ParkingLot {
 	}
 
 	public boolean attemptParking(Car c, int timestamp) {
-	
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
-	
+		// fix this
+		for (int i = 0; i < numRows; i++)
+			for (int j = 0; j < numSpotsPerRow; j++) {
+				if (canParkAt(i, j, c)) {
+					park(i, j, c, timestamp);
+					return true;
+				}
+			}
+
+		return false;
 	}
 
 	/**
@@ -95,7 +102,7 @@ public class ParkingLot {
 		int count = 0;
 
 		if (!occupancy.isEmpty()){
-			for (int i = 0; i < occupancy.size(); i++)
+			for (int i = 0; i < occupancy.size(); i++){
 				if (occupancy.get(i) != null){
 					count++;
 				}
