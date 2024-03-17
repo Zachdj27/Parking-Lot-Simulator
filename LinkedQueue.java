@@ -23,6 +23,7 @@ public class LinkedQueue<D> implements Queue<D> {
 
 	private Elem<D> front;
 	private Elem<D> rear;
+	private int size;
 
 	public LinkedQueue() {
 		front = rear = null;
@@ -69,12 +70,15 @@ public class LinkedQueue<D> implements Queue<D> {
 		return returnedValue;
 	}
 
-	public D peek() {
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
-	}
-
 	public int size() {
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
+		return size;
+	}
+	
+	public D peek() {
+		if (isEmpty()) {
+			throw new IllegalStateException();
+		}
+		return front.value;
 	}
 
 	public String toString() {
