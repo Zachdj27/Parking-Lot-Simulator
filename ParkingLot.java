@@ -42,7 +42,29 @@ public class ParkingLot {
 	 */
 	public void park(Car c, int timestamp) {
 	
-		throw new UnsupportedOperationException("This method has not been implemented yet!");
+		if (c == null) {
+			throw new NullPointerException("No null cars allowed");
+		}
+		if (!c instanceof Car){
+			throw new IllegalArgumentException("Only cars allowed in this parking");			
+		}
+		if (timestamp < 0) {
+			throw new IllegalArgumentException("timestamp cannot be negative");
+		}
+
+		if (occupancy.isEmpty() && capacity != 0){
+			occupancy.addFirst(new Spot(c, timestamp));
+		}
+		else{
+			boolean notParked = true;
+			for (int i = 0; i < occupancy.size(); i++){
+				if(occupancy.get(i) == null && notParked){
+					occupancy.add(new Spot(c, timestamp));
+					notParked = false;
+				}
+			}
+		}
+		
 	
 	}
 
@@ -59,16 +81,25 @@ public class ParkingLot {
 	}
 
 	public boolean attemptParking(Car c, int timestamp) {
-		// fix this
-		for (int i = 0; i < numRows; i++)
-			for (int j = 0; j < numSpotsPerRow; j++) {
-				if (canParkAt(i, j, c)) {
-					park(i, j, c, timestamp);
-					return true;
-				}
-			}
 
+		if (c == null) {
+			throw new NullPointerException("No null cars allowed");
+		}
+		if (!c instanceof Car){
+			throw new IllegalArgumentException("Only cars allowed in this parking");			
+		}
+		if (timestamp < 0) {
+			throw new IllegalArgumentException("timestamp cannot be negative");
+		}
+
+		for (int i = 0; i < occupancy.size(); i++) {
+			if(occupancy.get(i) == null){
+				park(c, timestamp);
+				return true;
+			}
+		}
 		return false;
+
 	}
 
 	/**
@@ -88,7 +119,7 @@ public class ParkingLot {
 	public Spot getSpotAt(int i) {
 
 		if (i >= occupancy.size() || i < 0) {
-			throw new IndexOutOfBoundsException("Out of range index error.")
+			throw new IndexOutOfBoundsException("Out of range index error.");
 		}
 
 		return occupancy.get(i);
