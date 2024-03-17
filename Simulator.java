@@ -1,5 +1,5 @@
 /**
- * @author Mehrdad Sabetzadeh, Ismet Bilgic, University of Ottawa
+ * @author Mehrdad Sabetzadeh, University of Ottawa
  *
  */
 public class Simulator {
