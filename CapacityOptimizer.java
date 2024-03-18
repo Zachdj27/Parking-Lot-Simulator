@@ -7,8 +7,9 @@ public class CapacityOptimizer {
 		
 		int capacity = 1;
 		long start, end;
+		endOfSim = false;
 
-		while (true) {
+		while (!endOfSim) {
 			System.out.println("=== Setting lot capacity to: " + capacity + "===");
 			int qSizes = 0;
 			
@@ -28,7 +29,7 @@ public class CapacityOptimizer {
 			float average = qSizes/NUM_RUNS;
 
 			if (average <= THRESHOLD) {
-				break;
+				endOfSim = true;
 			} else {
 				System.out.println();
 				capacity++;

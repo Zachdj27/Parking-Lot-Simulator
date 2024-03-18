@@ -131,17 +131,7 @@ public class ParkingLot {
 	 */
 	public int getOccupancy() {
 
-		int count = 0;
-
-		if (!occupancy.isEmpty()){
-			for (int i = 0; i < occupancy.size(); i++){
-				if (occupancy.get(i) != null){
-					count++;
-				}
-			}
-		}
-
-		return count;
+		return occupancy.size();
 	}
 
 	/**
