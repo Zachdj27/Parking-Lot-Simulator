@@ -113,7 +113,7 @@ public class Simulator {
 				int duration = clock - spot.getTimestamp(); // calculate the duration of the car's stay in the parking lot
 				boolean willLeave = false; // initialize a boolean variable to check if the car will leave the parking lot
 
-				if (duration == MAX_PARKING_DURATION){ // if the duration is equal to the maximum parking duration, the car will leave the parking lot
+				if (duration > MAX_PARKING_DURATION){ // if the duration is equal to the maximum parking duration, the car will leave the parking lot
 					willLeave = true; // set the boolean variable to true
 				} 
 				else {

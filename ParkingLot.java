@@ -52,14 +52,6 @@ public class ParkingLot {
 			throw new IllegalArgumentException("timestamp cannot be negative");
 		}
 
-		boolean notParked = true;
-		for (int i = 0; i < occupancy.size(); i++){
-			if(occupancy.get(i) == null && notParked){
-				occupancy.add(new Spot(c, timestamp));
-				notParked = false;
-			}
-		}
-		
 		if (occupancy.size() <= capacity){
 			occupancy.add(new Spot(c, timestamp));
 		}
@@ -102,17 +94,11 @@ public class ParkingLot {
 			throw new IllegalArgumentException("timestamp cannot be negative");
 		}
 
-		if (occupancy.size() <= capacity) {
+		if (occupancy.size() < capacity) {
 			park(c, timestamp);
 			return true;
 		}
 
-		for (int i = 0; i < occupancy.size(); i++) {
-			if(occupancy.get(i) == null){
-				park(c, timestamp);
-				return true;
-			}
-		}
 		return false;
 
 	}
