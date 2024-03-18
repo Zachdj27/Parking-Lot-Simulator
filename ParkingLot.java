@@ -52,17 +52,16 @@ public class ParkingLot {
 			throw new IllegalArgumentException("timestamp cannot be negative");
 		}
 
-		if (occupancy.isEmpty() && capacity != 0){
-			occupancy.add(new Spot(c, timestamp));
-		}
-		else{
-			boolean notParked = true;
-			for (int i = 0; i < occupancy.size(); i++){
-				if(occupancy.get(i) == null && notParked){
-					occupancy.add(new Spot(c, timestamp));
-					notParked = false;
-				}
+		boolean notParked = true;
+		for (int i = 0; i < occupancy.size(); i++){
+			if(occupancy.get(i) == null && notParked){
+				occupancy.add(new Spot(c, timestamp));
+				notParked = false;
 			}
+		}
+		
+		if (occupancy.size() <= capacity){
+			occupancy.add(new Spot(c, timestamp));
 		}
 		
 	
@@ -76,7 +75,7 @@ public class ParkingLot {
 	 */
 	public Spot remove(int i) {
 	
-		if (i >= occupancy.size() || i < 0) {
+		if (i >= occupancy.size()|| i < 0) {
 			throw new IndexOutOfBoundsException("Out of range index error.");
 		}
 
@@ -101,6 +100,11 @@ public class ParkingLot {
 		}
 		if (timestamp < 0) {
 			throw new IllegalArgumentException("timestamp cannot be negative");
+		}
+
+		if (occupancy.size() <= capacity) {
+			park(c, timestamp);
+			return true;
 		}
 
 		for (int i = 0; i < occupancy.size(); i++) {

@@ -27,6 +27,7 @@ public class LinkedQueue<D> implements Queue<D> {
 
 	public LinkedQueue() {
 		front = rear = null;
+		size = 0;
 	}
 
 	public boolean isEmpty() {
@@ -50,6 +51,7 @@ public class LinkedQueue<D> implements Queue<D> {
 			rear.next = newElem;
 			rear = newElem;
 		}
+		size++;
 	}
 
 	public D dequeue() {
@@ -67,6 +69,7 @@ public class LinkedQueue<D> implements Queue<D> {
 			front = front.next;
 		}
 
+		size--;
 		return returnedValue;
 	}
 
