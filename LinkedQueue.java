@@ -79,7 +79,7 @@ public class LinkedQueue<D> implements Queue<D> {
 	
 	public D peek() {
 		if (isEmpty()) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("Nothing to peek at here.");
 		}
 		return front.value;
 	}
