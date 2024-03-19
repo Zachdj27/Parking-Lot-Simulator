@@ -30,7 +30,7 @@ public class TriangularDistribution {
 			this.b = b;
 		} else {
 		
-			// Hint: throw an appropriate exception here!
+			throw new IllegalArgumentException("Enter valid numbers!");
 	
 		}
 	}

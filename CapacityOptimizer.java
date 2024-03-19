@@ -7,7 +7,7 @@ public class CapacityOptimizer {
 		
 		int capacity = 1;
 		long start, end;
-		endOfSim = false;
+		boolean endOfSim = false;
 
 		while (!endOfSim) {
 			System.out.println("=== Setting lot capacity to: " + capacity + "===");
