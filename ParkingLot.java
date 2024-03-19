@@ -51,8 +51,11 @@ public class ParkingLot {
 		if (timestamp < 0) {
 			throw new IllegalArgumentException("timestamp cannot be negative");
 		}
+		if (occupancy.size() == capacity) {
+			throw new IllegalStateException("Parking lot is full!");
+		}
 
-		if (occupancy.size() <= capacity){
+		if (occupancy.size() < capacity){
 			occupancy.add(new Spot(c, timestamp));
 		}
 		
