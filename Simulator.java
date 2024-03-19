@@ -72,7 +72,7 @@ public class Simulator {
 	public Simulator(ParkingLot lot, int perHourArrivalRate, int steps) {
 
 		if (lot == null) {
-			throw new IllegalArgumentException("Parking lot cannot be null."); // if the lot is null, throw an exception
+			throw new NullPointerException("Parking lot cannot be null."); // if the lot is null, throw an exception
 		}
 
 		if (perHourArrivalRate < 0) {
