@@ -12,4 +12,4 @@ Implementing linked queues, this program simulates a full 24 hour day in a parki
 6. Otherwise, the simulation runs again but with a parking lot with an increased capacity.
 
 ## How it looks
-![](screenshot/rate5.txt)
+![](outputs/rate5.txt)
